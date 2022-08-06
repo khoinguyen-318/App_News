@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE"></title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}">
+    <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
+    <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}">
+    <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/select.dataTables.min.css}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}">
+    <!-- endinject -->
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- Nav -bar -->
+    <nav layout:replace="~{layout/_nav-bar :: nav-bar}"></nav>
+    <!-- End nav-bar -->
+    <!-- ---------- -->
+    <!-- Body -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- Theme setting -->
+        <div layout:replace="~{layout/_setting-theme :: setting-theme}"></div>
+        <!--End Theme setting -->
+        <!-- ------------ -->
+        <!-- Right sidebar -->
+        <div layout:replace="~{layout/_right-side-bar :: right-side-bar}"></div>
+        <!-- End right sidebar -->
+        <!-- ------------------- -->
+        <!-- side bar off canvas -->
+        <div layout:replace="~{layout/_sidebar :: sidebar}"></div>
+        <!-- end side bar off canvas -->
+        <!-- ------------------------ -->
+        <!-- Content -->
+        <!--Can be replace  -->
+        <div class="main-panel" layout:fragment="content">
+            <div class="content-wrapper">
+                <h2>Đây là body có thể thay thế</h2>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- End content -->
+    </div>
+    <!-- End body -->
+</div>
+
+<!-- Library -->
+<script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
+<!-- Plugin js for this page -->
+<script th:src="@{/vendors/chart.js/Chart.min.js}"></script>
+<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"></script>
+<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"></script>
+<script th:src="@{/js/dataTables.select.min.js}"></script>
+
+<!-- End plugin js for this page -->
+<!-- inject:js -->
+<script th:src="@{/js/off-canvas.js}"></script>
+<script th:src="@{/js/hoverable-collapse.js}"></script>
+<script th:src="@{/js/template.js}"></script>
+<script th:src="@{/js/settings.js}"></script>
+<script th:src="@{/js/todolist.js}"></script>
+<!-- end inject -->
+<!-- Custom js for this page-->
+<script th:src="@{/js/dashboard.js}"></script>
+<script th:src="@{/js/Chart.roundedBarCharts.js}"></script>
+</body>
+
+</html>
