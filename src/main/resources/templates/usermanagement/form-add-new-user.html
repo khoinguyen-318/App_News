@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{./layout/layout}">
+<head>
+    <title>Admin management Site</title>
+</head>
+<body>
+<div class="main-panel" layout:fragment="content">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Add new management</h4>
+                <p class="card-description">
+                    Any Admin or Manager can access this page
+                </p>
+                <form class="forms-sample" method="post" th:object="${user}"
+                      th:action="@{/admin/admin-management/add-new}">
+                    <div class="form-group">
+                        <label for="exampleInputName1">User name</label>
+                        <input th:field="*{userName}" type="text" class="form-control" id="exampleInputName1" placeholder="User Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Password</label>
+                        <input type="password" th:field="*{passWord}" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Email address</label>
+                        <input type="email" th:field="*{email}" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Full name</label>
+                        <input type="text" th:field="*{fullName}" class="form-control"  placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleSelectGender">Role</label>
+                        <select th:field="*{role}" class="form-control" id="exampleSelectGender">
+                            <option th:value="'ADMIN'">ADMIN</option>
+                            <option th:value="'MANAGER'">MANAGER</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select th:field="*{isDeleted}" class="form-control" id="status">
+                            <option th:value="false">Active</option>
+                            <option th:value="true">Disable</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light" type="reset">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

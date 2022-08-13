@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{./layout/layout}">
+<head>
+    <title>Admin management Site</title>
+</head>
+<body>
+    <div class="main-panel" layout:fragment="content">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Admin-Manager Management</h4>
+                    <a class="btn btn-primary btn-icon-text"
+                       th:href="@{/admin/admin-management/add-new}">
+                        <i class="fa fa-user-plus btn-icon-prepend"></i>Add new User</a>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>
+                                    User name
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Full name
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="user : ${listUser}">
+                                <td th:text="${user.userName}">
+                                </td>
+                                <td>
+                                    <label th:text="${user.role}"
+                                           class="badge badge-pill badge-info"></label>
+                                </td>
+                                <td th:text="${user.email}">
+
+                                </td>
+                                <td th:text="${user.fullName}">
+
+                                </td>
+                                <td>
+                                    <label th:text="${!user.isDeleted}? 'Active':'Disable'"
+                                           th:class="${!user.isDeleted}? 'badge badge-success' : 'badge badge-danger'">
+                                    </label>
+                                </td>
+                                <td>
+                                    <a th:href="@{/admin/admin-management/delete/{id}(id=${user.id})}">Delete</a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
