@@ -46,4 +46,15 @@ public class UserManagerController extends ParentController{
         services.deleteUser(id);
         return "redirect:/admin/admin-management";
     }
+    @GetMapping("/admin-management/update/{id}")
+    public String getById(@PathVariable(name = "id") Long id,Model model){
+        UserDTO existUser = services.getById(id);
+        model.addAttribute("existUser",existUser);
+        return "usermanagement/form-update-user";
+    }
+    @PostMapping("/admin-management/update")
+    public String processUpdate(@ModelAttribute("existUser") UserDTO userDTO){
+        services.updateUser(userDTO,userDTO.getId());
+        return "redirect:/admin/admin-management";
+    }
 }

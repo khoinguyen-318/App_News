@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<UserEntity,Long> {
     Optional<UserEntity> findByUserName(String username);
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Query(value = "select u.fullname from tbl_user u where u.username = ?1",nativeQuery = true)
     String getFullName(String username);
 }

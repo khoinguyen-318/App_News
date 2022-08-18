@@ -11,4 +11,8 @@ public interface IUserServices {
     UserDTO addNewAccount(UserDTO userDTO);
 
     void deleteUser(Long id);
+
+    UserDTO getById(Long id);
+
+    UserDTO updateUser(UserDTO newUser, Long id);
 }

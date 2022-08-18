@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -37,8 +38,9 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/error/**").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN","MANAGER") //Accept Admin Account
-                .antMatchers("/api/**").hasAnyRole("ADMIN","USER","MANAGER")
+                .antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -53,7 +55,9 @@ public class WebSecurityConfig {
                     .logoutSuccessUrl("/login?logout=true")
                     .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID")
-                    .permitAll();
+                    .permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/error");
         return http.build();
     }
     @Bean

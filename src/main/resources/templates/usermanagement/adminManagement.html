@@ -59,7 +59,9 @@
                                     </label>
                                 </td>
                                 <td>
-                                    <a th:href="@{/admin/admin-management/delete/{id}(id=${user.id})}">Delete</a>
+                                    <a th:href="@{/admin/admin-management/delete/{id}(id=${user.id})}"><i class="fa fa-trash"></i></a>
+                                    &nbsp;&nbsp;
+                                    <a th:href="@{/admin/admin-management/update/{id}(id=${user.id})}"><i class="ti ti-pencil"></i></a>
                                 </td>
                             </tr>
 

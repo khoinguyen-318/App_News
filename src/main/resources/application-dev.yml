@@ -1,5 +1,8 @@
 server:
   port: 9999
+  error:
+    whitelabel:
+      enabled: false
 spring:
   datasource: #Database
     driver-class-name: com.mysql.cj.jdbc.Driver

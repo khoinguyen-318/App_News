@@ -36,4 +36,20 @@ public class UserServices implements IUserServices {
     public void deleteUser(Long id){
         repository.deleteById(id);
     }
+
+    @Override
+    public UserDTO getById(Long id){
+        return repository.findById(id)
+                .map(existUser->modelMapper.map(existUser,UserDTO.class))
+                .orElseThrow(); //Exception
+    }
+    @Override
+    public UserDTO updateUser(UserDTO newUser, Long id){
+        return repository.findById(id)
+                .map(existUser->{
+                    modelMapper.map(newUser,existUser);
+                    existUser.setId(id);
+                    return modelMapper.map(repository.save(existUser), UserDTO.class);
+                }).orElseThrow(); //Exception
+    }
 }

@@ -23,7 +23,7 @@ public class ParentEntity {
     private Boolean isDeleted;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "createddate")
+    @Column(name = "createddate",updatable = false)
     @CreatedDate
     private Date createdDate;
 
@@ -32,7 +32,7 @@ public class ParentEntity {
     @LastModifiedDate
     private Date modifiedDate;
 
-    @Column(name = "createdby")
+    @Column(name = "createdby",updatable = false)
     @CreatedBy
     private String createdBy;
 
